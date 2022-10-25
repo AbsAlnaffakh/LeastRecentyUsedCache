@@ -50,10 +50,9 @@ public class LeastRecentlyUsedCache<TKey, TValue> : ICache<TKey, TValue>
         {
             if (_cache.TryGetValue(key, out var value))
             {   
-                _orderedKeys.Remove(key);                                
+                _orderedKeys.Remove(key);
+                _orderedKeys.AddFirst(key);
             }
-            
-            _orderedKeys.AddFirst(key);
 
             return value;
         }
